@@ -44,23 +44,34 @@ const App = () => {
 
 	return (
 		<div className="app">
-			<h1 className="mb-4">Todo List</h1>
-			<Form.Group className="add-task mb-4">
-				<InputGroup>
-					<FormControl
-						type="text"
-						placeholder="Add a new task"
-						value={newTask}
-						onChange={(e) => setNewTask(e.target.value)}
-					/>
-					<Form.Select aria-label="Priority" value={priority} onChange={(e) => setPriority(e.target.value)}>
-						<option value="low">Low</option>
-						<option value="medium">Medium</option>
-						<option value="high">High</option>
-					</Form.Select>
-					<Button variant="primary" onClick={handleAddTask}>
-						Add Task
-					</Button>
+			<h1 className="mb-4 font-section">Todo List</h1>
+			<Form.Group className="mb-4">
+				<InputGroup className="d-md-flex flex-md-row flex-column gap-3 ">
+					{/* Task Input Field  */}
+					<div>
+						<FormControl
+							type="text"
+							placeholder="Add a new task"
+							value={newTask}
+							onChange={(e) => setNewTask(e.target.value)}
+						/>
+					</div>
+					{/* Task Priority List */}
+					<div>
+						{" "}
+						<Form.Select aria-label="Priority" value={priority} onChange={(e) => setPriority(e.target.value)}>
+							<option value="low">Low</option>
+							<option value="medium">Medium</option>
+							<option value="high">High</option>
+						</Form.Select>
+					</div>
+
+					{/* Add Task Button  */}
+					<div>
+						<Button variant="primary" onClick={handleAddTask}>
+							Add Task
+						</Button>
+					</div>
 				</InputGroup>
 			</Form.Group>
 			<div className="task-list">

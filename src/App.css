@@ -7,67 +7,14 @@
 	font-family: Arial, sans-serif;
 }
 
-.add-task {
-	margin-bottom: 20px;
-	display: flex;
-}
-
-.add-task input[type="text"] {
-	padding: 8px;
-	width: 60%;
-	margin-right: 10px;
-}
-
 .add-task select {
 	padding: 8px;
 	margin-right: 10px;
 }
 
-.add-task button {
-	padding: 8px 20px;
-	background-color: #007bff;
-	color: #fff;
-	border: none;
-	cursor: pointer;
-}
-
-.add-task button:hover {
-	background-color: #0056b3;
-}
-
-.task-list .task {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 10px;
-	border-bottom: 1px solid #ccc;
-	cursor: pointer;
-}
-
-.task-list .task:last-child {
-	border-bottom: none;
-}
-
 .task-list .completed {
 	text-decoration: line-through;
 	opacity: 0.5;
-}
-
-.task-list .actions button {
-	padding: 5px 10px;
-	margin-left: 5px;
-	background-color: transparent;
-	border: 1px solid #ccc;
-	cursor: pointer;
-}
-
-.task-list .actions button:hover {
-	background-color: #eee;
-}
-
-.task-list input[type="text"] {
-	padding: 8px;
-	margin-right: 10px;
 }
 
 .task-stats {
