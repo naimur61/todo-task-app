@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
-import { BsPencilSquare, BsTrash, BsCheck, BsX } from "react-icons/bs";
+// import { BsPencilSquare, BsTrash, BsCheck, BsX } from "react-icons/bs";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import TaskComponent from "./Components/Task";
 
 const App = () => {
 	const [tasks, setTasks] = useState(() => {
@@ -42,6 +43,18 @@ const App = () => {
 		setEditTaskText("");
 	};
 
+	const props = {
+		tasks,
+		setTasks,
+		editTaskId,
+		setEditTaskId,
+		editTaskText,
+		setEditTaskText,
+		handleSaveEditedTask,
+		handleEditTask,
+		handleDeleteTask,
+	};
+
 	return (
 		<div className="app">
 			<h1 className="mb-4 font-section">Todo List</h1>
@@ -74,54 +87,9 @@ const App = () => {
 					</div>
 				</InputGroup>
 			</Form.Group>
-			<div className="task-list">
-				{tasks.map((task) => (
-					<div className={`task ${task.completed ? "completed" : ""}`} key={task.id}>
-						<InputGroup className="mb-2">
-							<Form.Check
-								type="checkbox"
-								checked={task.completed}
-								onChange={() => {
-									setTasks((prevTasks) =>
-										prevTasks.map((t) => (t.id === task.id ? { ...t, completed: !t.completed } : t))
-									);
-								}}
-							/>
-							{editTaskId === task.id ? (
-								<>
-									<FormControl
-										type="text"
-										value={editTaskText}
-										onChange={(e) => setEditTaskText(e.target.value)}
-										onKeyDown={(e) => {
-											if (e.key === "Enter") {
-												handleSaveEditedTask();
-											}
-										}}
-										autoFocus
-									/>
-									<Button variant="success" onClick={handleSaveEditedTask}>
-										<BsCheck />
-									</Button>
-									<Button variant="danger" onClick={() => setEditTaskId(null)}>
-										<BsX />
-									</Button>
-								</>
-							) : (
-								<>
-									<Form.Control plaintext readOnly value={task.text} onClick={() => handleEditTask(task)} />
-									<Button variant="info" onClick={() => handleEditTask(task)}>
-										<BsPencilSquare />
-									</Button>
-									<Button variant="danger" onClick={() => handleDeleteTask(task.id)}>
-										<BsTrash />
-									</Button>
-								</>
-							)}
-						</InputGroup>
-					</div>
-				))}
-			</div>
+
+			<TaskComponent props={props} />
+
 			<div className="task-stats mt-4">
 				<p>Total Tasks: {tasks.length}</p>
 				<p>Completed Tasks: {tasks.filter((task) => task.completed).length}</p>
