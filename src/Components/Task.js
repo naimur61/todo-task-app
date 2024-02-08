@@ -21,7 +21,12 @@ const TaskComponent = ({ props }) => {
 				<div className="col">
 					<div className="task-list">
 						{tasks.map((task) => (
-							<div className={`task ${task.completed ? "completed" : ""}`} key={task.id}>
+							<div
+								className={`d-md-flex flex-md-row flex-column justify-content-between gap-3 task ${
+									task.completed ? "completed" : ""
+								}`}
+								key={task.id}
+							>
 								<div className="d-flex align-items-center mb-2">
 									<Form.Check
 										type="checkbox"
@@ -56,23 +61,23 @@ const TaskComponent = ({ props }) => {
 								</div>
 								<div className="d-flex align-items-center">
 									{editTaskId === task.id ? (
-										<>
+										<div className="d-flex flex-row gap-2">
 											<Button variant="success" onClick={handleSaveEditedTask}>
 												<BsCheck />
 											</Button>
 											<Button variant="danger" onClick={() => setEditTaskId(null)}>
 												<BsX />
 											</Button>
-										</>
+										</div>
 									) : (
-										<>
+										<div className="d-flex flex-row gap-2">
 											<Button variant="info" onClick={() => handleEditTask(task)}>
 												<BsPencilSquare />
 											</Button>
 											<Button variant="danger" onClick={() => handleDeleteTask(task.id)}>
 												<BsTrash />
 											</Button>
-										</>
+										</div>
 									)}
 								</div>
 							</div>
