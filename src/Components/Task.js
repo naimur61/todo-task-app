@@ -55,7 +55,7 @@ const TaskComponent = ({ props }) => {
 											readOnly
 											value={task.text}
 											onClick={() => handleEditTask(task)}
-											className="flex-grow-1 mx-2"
+											className="flex-grow-1 mx-3"
 										/>
 									)}
 								</div>

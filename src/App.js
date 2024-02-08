@@ -88,12 +88,12 @@ const App = () => {
 				</InputGroup>
 			</Form.Group>
 
-			<TaskComponent props={props} />
-
-			<div className="task-stats mt-4">
+			<div className="task-stats mt-4 d-flex flex-row gap-4">
 				<p>Total Tasks: {tasks.length}</p>
-				<p>Completed Tasks: {tasks.filter((task) => task.completed).length}</p>
+				<p className="text-success">Completed Tasks: {tasks.filter((task) => task.completed).length}</p>
 			</div>
+
+			<TaskComponent props={props} />
 		</div>
 	);
 };
