@@ -22,7 +22,7 @@ const TaskComponent = ({ props }) => {
 					<div className="task-list">
 						{tasks.map((task) => (
 							<div
-								className={`d-md-flex flex-md-row flex-column justify-content-between gap-3 task ${
+								className={`d-md-flex flex-md-row flex-column justify-content-between gap-3  mb-3 ${
 									task.completed ? "completed" : ""
 								}`}
 								key={task.id}
@@ -37,6 +37,7 @@ const TaskComponent = ({ props }) => {
 											);
 										}}
 									/>
+
 									{editTaskId === task.id ? (
 										<FormControl
 											type="text"
@@ -47,7 +48,6 @@ const TaskComponent = ({ props }) => {
 													handleSaveEditedTask();
 												}
 											}}
-											autoFocus
 										/>
 									) : (
 										<Form.Control
@@ -71,6 +71,17 @@ const TaskComponent = ({ props }) => {
 										</div>
 									) : (
 										<div className="d-flex flex-row gap-2">
+											<Button
+												variant={`${
+													task?.priority === "low"
+														? "success"
+														: task?.priority === "medium"
+														? "dark"
+														: "danger"
+												}`}
+											>
+												{task?.priority}
+											</Button>
 											<Button variant="info" onClick={() => handleEditTask(task)}>
 												<BsPencilSquare />
 											</Button>

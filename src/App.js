@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
-// import { BsPencilSquare, BsTrash, BsCheck, BsX } from "react-icons/bs";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import TaskComponent from "./Components/Task";
